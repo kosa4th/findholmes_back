@@ -30,10 +30,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 @RestController
 @RequestMapping("/detective")
@@ -76,16 +73,18 @@ public class DetectiveController {
             detective.setBusinessRegistration(request.getBusinessRegistration());
             detective.setProfilePicture(request.getProfilePicture());
             detective.setDetectiveLicense(request.getDetectiveLicense());
-//            detective.setSpecialties();
+
 
             // 2. Specialty 엔티티들을 데이터베이스에서 조회
-//            Set<Specialty> specialties = new HashSet<>(specialtyRepository.findAllById(specialtiesIds));
+            Set<Specialty> specialties = new HashSet<>(specialtyRepository.findAllById(request.getSpecialties()));
 //
 //            // 3. Detective 객체에 specialties 설정
-//            detective.setSpecialties(specialties);
+            detective.setSpecialties(specialties);
 //            System.out.println(request.getSpecialties());
             System.out.println(request);
 
+            // 4. Detective 엔티티 저장
+            detectiveRepository.save(detective);
 //            // 전문 분야 처리
 //            List<Specialty> specialties = specialtyRepository.findAllById(request.getSelectedSpecialties());
 //            detective.setSpecialties(specialties);
