@@ -1,5 +1,6 @@
 package org.detective.services.member;
 
+//import org.detective.repository.ClientRepository;
 import org.detective.entity.Client;
 import org.detective.entity.User;
 import org.detective.repository.ClientRepository;
@@ -30,7 +31,8 @@ public class UserService {
             userRepository.save(user);
             Long id = user.getUserId();
             Client client = new Client();
-            client.setUserId(id);
+            client.setClientId(id);
+            client.setUser(user);
             clientRepository.save(client);
             return true;
         }
