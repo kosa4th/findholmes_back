@@ -41,6 +41,7 @@ public class SecurityConfig {
                         .requestMatchers("/detective/**").hasRole("DETECTIVE")
                         .requestMatchers("/test/**").hasRole("USER")
                         .requestMatchers("/admin/**").permitAll()
+                        .requestMatchers("/client/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class); // JWT 필터 추가

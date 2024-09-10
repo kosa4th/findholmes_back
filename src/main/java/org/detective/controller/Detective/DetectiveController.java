@@ -101,7 +101,7 @@ public class DetectiveController {
                 detective.setIntroduction(request.getIntroduction());
 
                 detective.setLocation(request.getLocation());
-
+                detective.setCurrentPoints(0L);
                 detective.setDetectiveGender(request.getDetectiveGender());
                 // Long 객체를 long 기본형으로 캐스팅
                 long resolvedCases = request.getResolvedCases();

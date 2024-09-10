@@ -1,5 +1,6 @@
 package org.detective.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -7,11 +8,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.ColumnDefault;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Table(name = "DETECTIVES")
 public class Detective {
     @Id
@@ -52,5 +55,8 @@ public class Detective {
     @Enumerated(EnumType.STRING)
     @Column(name = "approval_status")
     private ApprovalStatus approvalStatus;
+
+    @OneToMany(mappedBy = "detective", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<DetectiveSpeciality> specialties =  new ArrayList<>();
 
 }

@@ -1,5 +1,6 @@
 package org.detective.controller.Admin;
 
+import org.detective.dto.DetectiveApprovalDTO;
 import org.detective.entity.DetectiveApproval;
 import org.detective.services.admin.DetectiveApprovalService;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,7 +18,7 @@ public class AdminController {
     private DetectiveApprovalService detectiveApprovalService;
 
     @GetMapping("/approvals")
-    public List<DetectiveApproval> getAllApprovals() {
+    public List<DetectiveApprovalDTO> getAllDetectiveApprovals() {
         return detectiveApprovalService.findAll();
     }
 

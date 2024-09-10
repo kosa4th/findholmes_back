@@ -14,7 +14,7 @@ public class DetectiveDTO {
     private String introduction;
     private String location;
     private String detectiveGender;
-    private int resolvedCases;
+    private Long resolvedCases;
     private String approvalStatus;
     private List<Long> specialties; // 전문 분야 ID 배열
 
